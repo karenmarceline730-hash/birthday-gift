@@ -311,4 +311,573 @@ body{
 
 .plate{
     position:absolute;
-    bottom:
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:275px;
+    height:20px;
+
+    border-radius:50%;
+
+    background:linear-gradient(#eee,#aaa);
+    box-shadow:0 7px 15px rgba(0,0,0,.3);
+}
+
+/* layer */
+
+.layer{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+
+    border-radius:15px 15px 10px 10px;
+
+    box-shadow:
+        inset 0 -7px 0 rgba(0,0,0,.08),
+        0 5px 10px rgba(0,0,0,.15);
+}
+
+.layer.bottom{
+    bottom:16px;
+    width:225px;
+    height:48px;
+
+    background:linear-gradient(135deg,#c879a9,#e6a9ca);
+
+    animation:layerBottom .8s ease both;
+}
+
+.layer.middle{
+    bottom:58px;
+    width:190px;
+    height:43px;
+
+    background:linear-gradient(135deg,#8e78c4,#b7a6e8);
+
+    animation:layerMiddle 1s ease .5s both;
+}
+
+.layer.top{
+    bottom:95px;
+    width:150px;
+    height:38px;
+
+    background:linear-gradient(135deg,#f0b6d3,#ffd5e5);
+
+    animation:layerTop 1s ease 1s both;
+}
+
+@keyframes layerBottom{
+    from{
+        opacity:0;
+        transform:translateX(-50%) translateY(-80px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes layerMiddle{
+    from{
+        opacity:0;
+        transform:translateX(-50%) translateY(-70px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes layerTop{
+    from{
+        opacity:0;
+        transform:translateX(-50%) translateY(-65px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(-50%) translateY(0);
+    }
+}
+
+/* cream */
+
+.cream{
+    position:absolute;
+    width:100%;
+    height:10px;
+    left:0;
+    top:-4px;
+
+    background:#fff2f7;
+    border-radius:50%;
+
+    box-shadow:0 3px 5px rgba(0,0,0,.1);
+}
+
+/* berries */
+
+.berry{
+    position:absolute;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#7d315c;
+    box-shadow:inset -2px -2px 3px rgba(0,0,0,.2);
+}
+
+.b1{left:30px;bottom:35px;}
+.b2{right:30px;bottom:34px;}
+.b3{left:50%;bottom:72px;transform:translateX(-50%);}
+
+/* TITLE */
+
+.title{
+    margin-top:4px;
+    min-height:58px;
+
+    font-family:'Playfair Display',serif;
+    font-size:43px;
+    line-height:1.1;
+}
+
+.type{
+    display:inline;
+}
+
+.cursor{
+    display:inline-block;
+    width:3px;
+    height:38px;
+    background:#fff;
+    margin-left:4px;
+    vertical-align:-4px;
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0;}
+}
+
+/* NAME */
+
+.name{
+    margin-top:7px;
+    font-size:27px;
+    font-weight:700;
+
+    color:#f1c5df;
+
+    text-shadow:
+        0 0 20px rgba(238,163,207,.35);
+}
+
+/* MESSAGE */
+
+.message{
+    margin:17px auto 0;
+    max-width:365px;
+
+    min-height:85px;
+
+    color:#ddd7e3;
+    font-size:14px;
+    line-height:1.75;
+}
+
+.message span{
+    opacity:0;
+    display:inline;
+    animation:wordAppear .45s ease forwards;
+}
+
+@keyframes wordAppear{
+    from{
+        opacity:0;
+        filter:blur(5px);
+        transform:translateY(5px);
+    }
+    to{
+        opacity:1;
+        filter:blur(0);
+        transform:translateY(0);
+    }
+}
+
+/* BUTTON */
+
+.gift{
+    margin-top:16px;
+
+    border:none;
+    padding:14px 25px;
+
+    border-radius:50px;
+
+    font-family:inherit;
+    font-size:14px;
+    font-weight:700;
+
+    color:#241729;
+
+    background:linear-gradient(
+        135deg,
+        #fff,
+        #f4c9e5,
+        #c9c4ff
+    );
+
+    box-shadow:
+        0 10px 30px rgba(220,180,240,.25);
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.gift:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
+/* HIDDEN NOTE */
+
+.note{
+    display:none;
+    margin-top:18px;
+
+    padding:18px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
+
+    color:#e8e1ea;
+    font-size:13px;
+    line-height:1.7;
+
+    animation:noteIn .7s ease;
+}
+
+@keyframes noteIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.signature{
+    margin-top:10px;
+    color:#efb8d8;
+    font-weight:600;
+}
+
+/* CONFETTI */
+
+.confetti{
+    position:fixed;
+    top:-20px;
+    width:8px;
+    height:13px;
+    z-index:20;
+
+    animation:confettiFall 3.5s linear forwards;
+}
+
+@keyframes confettiFall{
+    to{
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+    }
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:19px;
+
+    font-size:9px;
+    letter-spacing:3px;
+    color:#91899b;
+}
+
+/* MOBILE */
+
+@media(max-width:420px){
+
+    .card{
+        padding:27px 17px 23px;
+    }
+
+    .title{
+        font-size:37px;
+    }
+
+    .cake-area{
+        transform:scale(.88);
+        margin-top:-2px;
+        margin-bottom:-10px;
+    }
+
+    .message{
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<div class="stars"></div>
+
+<div class="decor d1">✦</div>
+<div class="decor d2">♡</div>
+<div class="decor d3">✧</div>
+<div class="decor d4">☆</div>
+
+<div class="container">
+
+<div class="card">
+
+    <div class="from">
+        a little birthday surprise
+    </div>
+
+    <div class="friend">
+        for my friend ♡
+    </div>
+
+    <div class="age">
+        23 years ✦
+    </div>
+
+    <!-- CAKE -->
+
+    <div class="cake-area">
+
+        <div class="candles">
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+        </div>
+
+        <div class="cake">
+
+            <div class="layer bottom">
+                <div class="cream"></div>
+            </div>
+
+            <div class="layer middle">
+                <div class="cream"></div>
+            </div>
+
+            <div class="layer top">
+                <div class="cream"></div>
+            </div>
+
+            <div class="berry b1"></div>
+            <div class="berry b2"></div>
+            <div class="berry b3"></div>
+
+            <div class="plate"></div>
+
+        </div>
+
+    </div>
+
+    <!-- TYPING TITLE -->
+
+    <div class="title">
+        <span class="type" id="typing"></span>
+        <span class="cursor"></span>
+    </div>
+
+    <div class="name">
+        Sean ♡
+    </div>
+
+    <!-- WORD BY WORD MESSAGE -->
+
+    <div class="message" id="message"></div>
+
+    <button class="gift" id="giftButton" onclick="openGift()">
+        open your little surprise ✦
+    </button>
+
+    <div class="note" id="note">
+
+        Here's to another year of
+        random conversations, good memories,
+        stupid jokes and unforgettable moments.
+
+        <div class="signature">
+            Happy 23rd, Sean ♡
+        </div>
+
+    </div>
+
+    <div class="footer">
+        MADE ESPECIALLY FOR YOU ✦
+    </div>
+
+</div>
+</div>
+
+<script>
+
+/* =========================
+   TYPING TITLE
+========================= */
+
+const titleText = "Happy Birthday";
+
+const typing = document.getElementById("typing");
+
+let titleIndex = 0;
+
+function typeTitle(){
+
+    if(titleIndex < titleText.length){
+
+        typing.textContent += titleText[titleIndex];
+
+        titleIndex++;
+
+        setTimeout(typeTitle,95);
+
+    }else{
+
+        startMessage();
+    }
+}
+
+
+/* =========================
+   WORD BY WORD MESSAGE
+========================= */
+
+const messageText =
+"I hope this new year of your life brings you beautiful moments, good people, great music, lots of laughter and memories worth keeping.";
+
+function startMessage(){
+
+    const message =
+        document.getElementById("message");
+
+    const words =
+        messageText.split(" ");
+
+    words.forEach((word,index)=>{
+
+        const span =
+            document.createElement("span");
+
+        span.textContent =
+            word + " ";
+
+        span.style.animationDelay =
+            (index * 0.075) + "s";
+
+        message.appendChild(span);
+
+    });
+}
+
+
+/* =========================
+   START
+========================= */
+
+setTimeout(typeTitle,900);
+
+
+/* =========================
+   BUTTON
+========================= */
+
+function openGift(){
+
+    const note =
+        document.getElementById("note");
+
+    note.style.display = "block";
+
+    document.getElementById("giftButton").textContent =
+        "Happy Birthday, Sean! ♡";
+
+    createConfetti();
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti(){
+
+    const colors = [
+        "#ffffff",
+        "#f4b7d8",
+        "#c5c0ff",
+        "#ffd48a",
+        "#a9d9e8"
+    ];
+
+    for(let i=0;i<90;i++){
+
+        const piece =
+            document.createElement("div");
+
+        piece.className =
+            "confetti";
+
+        piece.style.left =
+            Math.random()*100 + "vw";
+
+        piece.style.background =
+            colors[
+                Math.floor(
+                    Math.random()*colors.length
+                )
+            ];
+
+        piece.style.animationDelay =
+            Math.random()*1.5 + "s";
+
+        piece.style.transform =
+            "rotate(" +
+            Math.random()*360 +
+            "deg)";
+
+        document.body.appendChild(piece);
+
+        setTimeout(()=>{
+            piece.remove();
+        },5000);
+    }
+}
+
+</script>
+
+</body>
+</html>
