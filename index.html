@@ -1,1 +1,301 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Gift For You ✦</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, #25213a 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #301d2d 0%, transparent 30%),
+        #08080d;
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+/* Stars */
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: .6;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%,100% { opacity: .2; transform: scale(.7); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Main */
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.card {
+    width: min(500px, 92vw);
+    padding: 45px 35px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 30px;
+    background: rgba(255,255,255,.055);
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5),
+        inset 0 1px rgba(255,255,255,.08);
+    animation: appear 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.badge {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 50px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.1);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9c5d9;
+    margin-bottom: 25px;
+}
+
+.cake {
+    font-size: 70px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 20px rgba(255,170,210,.3));
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(40px, 10vw, 60px);
+    line-height: 1;
+    margin-bottom: 18px;
+}
+
+.subtitle {
+    color: #aaa7b5;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 380px;
+    margin: auto;
+}
+
+button {
+    margin-top: 30px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    color: #111;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255,255,255,.15);
+}
+
+/* Secret message */
+.message {
+    display: none;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    animation: messageIn .8s ease;
+}
+
+@keyframes messageIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message p {
+    color: #d5d2dc;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.signature {
+    margin-top: 18px;
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    top: -20px;
+    pointer-events: none;
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+    <div class="card">
+
+        <div class="badge">A little something for you</div>
+
+        <div class="cake">🎂</div>
+
+        <h1>Happy Birthday</h1>
+
+        <p class="subtitle">
+            Today is your day, so I made you something
+            instead of just saying "happy birthday" like everyone else.
+        </p>
+
+        <button onclick="openGift()">
+            Open your gift ✦
+        </button>
+
+        <div class="message" id="message">
+
+            <p>
+                I hope this new chapter brings you
+                moments worth remembering, people worth keeping,
+                and happiness that finds you when you least expect it.
+                <br><br>
+                Keep being exactly who you are.
+                You're doing better than you think.
+            </p>
+
+            <div class="signature">
+                — from someone who cares ♡
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+/* Create stars */
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 100; i++) {
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* Open gift */
+function openGift() {
+
+    document.getElementById("message").style.display = "block";
+
+    document.querySelector("button").innerHTML = "Happy Birthday ♡";
+
+    createConfetti();
+}
+
+
+/* Confetti */
+function createConfetti() {
+
+    const symbols = ["✦", "✧", "♡", "★", "·"];
+
+    for (let i = 0; i < 70; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.innerHTML =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.fontSize =
+            (10 + Math.random() * 18) + "px";
+
+        piece.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        piece.style.animationDelay =
+            Math.random() * .8 + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 5000);
+    }
+}
+
+</script>
+
+</body>
+  </html>
